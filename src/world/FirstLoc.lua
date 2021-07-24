@@ -124,7 +124,8 @@ end
 
 
 function FirstLoc:render()
-    self.player:render()
     self.baseLayer:render()
+    self.player:render()
+    
 end
 

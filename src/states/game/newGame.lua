@@ -13,7 +13,7 @@ function newGame:init()
     gameMoosic['newGame']:play()
 
     -- create a character
-
+        --gameStates:push(createCharacter())
     -- once the character is finished, save the game and reload? 
 end
 function newGame:enter() end
