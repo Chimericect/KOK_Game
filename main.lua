@@ -43,12 +43,9 @@ end
 
 -- PRESSING A KEY STUFF
 function love.keypressed(key)
-    -- keys can be accessed by string name
-    if key == 'escape' then
-        -- function to terminate application
-        love.event.quit()
-    end
+    love.keyboard.keysPressed[key] = true
 end
+
 
 function love.keyboard.wasPressed(key)
     return love.keyboard.keysPressed[key]
@@ -58,7 +55,6 @@ function love.update(dt)
     Timer.update(dt)
     gameStates:update(dt)
 
-    gameStates:render()
     love.keyboard.keysPressed = {}
 end
 

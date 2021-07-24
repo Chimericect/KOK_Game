@@ -17,7 +17,7 @@ Note: Puffball sizes are 32 x 32
 ]]--
 PASSIVE_ANIMAL_DEFS = 
 {
-    ['Brown Puffball'] = 
+    ['Brown_Puffball'] = 
     {
         texture = 'BrownPuffball',
         -- walking around, need sprite sheet for that
