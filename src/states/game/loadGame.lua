@@ -32,12 +32,12 @@ loadGame = Class{__includes = BaseState} -- EQUIV to PlayState
         self.currentRoom = FirstLoc(self.player)
 
         self.player.stateMachine = StateMachine {
-            ['walk'] = function() return PlayerWalkState(self.player, self) end,
+            ['walk'] = function() return PlayerWalkState(self.player, self.area) end,
             ['idle'] = function() return PlayerIdleState(self.player) end,
             ['swing-sword'] = function() return PlayerSwingSwordState(self.player, self.area) end
         }
         self.player.stateMachine:change('idle') -- THIS BREAKS IT RIGHT NOW
-        gameStates:push(FirstLoc(self.player))
+        --gameStates:push(FirstLoc(self.player))
     end
 
 
@@ -46,6 +46,7 @@ function loadGame:update(dt)
         love.event.quit()
     end
 
+    self.area:update(dt)
 end
 
 function loadGame:enter(params) 

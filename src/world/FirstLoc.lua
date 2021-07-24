@@ -17,7 +17,7 @@ function FirstLoc:init(player)
     self:generateFloor()
 
 -- generate animals in the location
-        self.animals = {}
+        self.entities = {}
         --self:generateAnimals()
 
 -- and the objects in the location (none yet)
@@ -104,18 +104,16 @@ function FirstLoc:update(dt)
     --update the player
     self.player:update(dt)
 
-    if entity.health <= 0 then
-        entity.dead = true
-    elseif not entity.dead then
-        entity:processAI({room = self}, dt)
-        entity:update(dt)
+    for i = #self.entities, 1, -1 do
+        local entity = self.entities[i]
+    
+        if entity.health <= 0 then
+            entity.dead = true
+        elseif not entity.dead then
+            entity:processAI({room = self}, dt)
+            entity:update(dt)
+        end 
     end 
-
-    -- collision between the player and entities in the room
-    if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
-        self.player:damage(1)
-        self.player:goInvulnerable(1.5)
-    end
 end
 
 
@@ -125,7 +123,9 @@ end
 
 function FirstLoc:render()
     self.baseLayer:render()
+    --self.animals:render()
     self.player:render()
+    
     
 end
 
