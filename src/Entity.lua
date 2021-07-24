@@ -5,6 +5,7 @@
 ]]
 
 Entity = Class{}
+
 function Entity:init(def)
     -- init the original direction.
         self.direction = 'down'
@@ -42,8 +43,8 @@ function Entity:createAnimations(animations)
 
     -- loop through all of them contained in the animation section
     -- for each animationStuff in animations (in init)
-    for i, animationStuff in pairs(animations) do
-        animationStuff[i] = Animation {
+    for k, animationStuff in pairs(animations) do
+        animationSet[k] = Animation {
             texture = animationStuff.texture or 'entities',
             frames = animationStuff.frames,
             interval = animationStuff.interval

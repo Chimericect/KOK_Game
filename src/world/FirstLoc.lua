@@ -21,8 +21,8 @@ function FirstLoc:init(player)
         --self:generateAnimals()
 
 -- and the objects in the location (none yet)
-        self.objects = {}
-     -- self:generateObjects() 
+        self.buildings = {}
+     -- self:generateBuildings() 
     
     self.player = player
 
@@ -54,8 +54,8 @@ function FirstLoc:generateAnimals()
             y = math.random(MAP_RENDER_OFFSET_Y + TILE_SIZE,
                 VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) + MAP_RENDER_OFFSET_Y - TILE_SIZE - 16),
             
-            width = 16,
-            height = 16,
+            width = 32,
+            height = 32,
 
             health = 1
         })
@@ -94,6 +94,9 @@ function FirstLoc:generateFloor()
 
 end
 
+-- generate objects / buildings
+function FirstLoc:generateBuildings()
+end
 
 function FirstLoc:update(dt)
     if self.adjacentOffsetX ~= 0 or self.adjacentOffsetY ~= 0 then return end

@@ -37,9 +37,7 @@ loadGame = Class{__includes = BaseState} -- EQUIV to PlayState
             ['swing-sword'] = function() return PlayerSwingSwordState(self.player, self.area) end
         }
         self.player.stateMachine:change('idle') -- THIS BREAKS IT RIGHT NOW
-        gameStates:push(FirstLoc())
-
-        
+        gameStates:push(FirstLoc(self.player))
     end
 
 

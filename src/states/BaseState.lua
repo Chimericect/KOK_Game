@@ -23,7 +23,7 @@ end
 function BaseState:enter() end
 function BaseState:exit() end
 function BaseState:update(dt) end
-function BaseState:render() 
+function BaseState:render()     
     local anim = self.entity.currentAnimation
     love.graphics.draw(gameTextures[anim.texture], gameFrame[anim.texture][anim:getCurrentFrame()],
         math.floor(self.entity.x), math.floor(self.entity.y))

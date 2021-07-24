@@ -1,4 +1,4 @@
-BaseState = Class{__includes = BaseState}
+closeGame = Class{__includes = BaseState}
 
 function BaseState:init() end
 function BaseState:enter() end
