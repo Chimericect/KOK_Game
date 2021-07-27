@@ -28,7 +28,7 @@ loadGame = Class{__includes = BaseState} -- EQUIV to PlayState
             offsetY = 5
         }
 
-        self.area = FirstLoc(self.player)
+        self.area = Area(self.player)
         self.currentRoom = FirstLoc(self.player)
 
         self.player.stateMachine = StateMachine {
@@ -36,10 +36,13 @@ loadGame = Class{__includes = BaseState} -- EQUIV to PlayState
             ['idle'] = function() return PlayerIdleState(self.player) end,
             ['swing-sword'] = function() return PlayerSwingSwordState(self.player, self.area) end
         }
-        self.player.stateMachine:change('idle') -- THIS BREAKS IT RIGHT NOW
+        self.player.stateMachine:change('idle') 
         --gameStates:push(FirstLoc(self.player))
     end
 
+    function loadGame:enter(params) 
+        -- nada
+    end
 
 function loadGame:update(dt) 
     if love.keyboard.wasPressed('escape') then
@@ -47,10 +50,6 @@ function loadGame:update(dt)
     end
 
     self.area:update(dt)
-end
-
-function loadGame:enter(params) 
-    -- nada
 end
 
 function loadGame:exit() 

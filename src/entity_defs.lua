@@ -1,4 +1,4 @@
--- Define the entities that are in the game
+-- Define the player / other non animal beings that are in the game
 
 ENTITY_DEFS = 
 {

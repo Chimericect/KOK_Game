@@ -2,24 +2,16 @@
 
 Author: Marissa Lewinski
 marissa.lewinski@yahoo.com
-]]
 
-ANIMAL_IDS = 
-{
-    --Puffball ID's
-    'Brown Puffball', 'Blue Puffball','Black Puffball',
-    'Grey Puffball', ' Albino Puffball'
-}
-
---[[ PASSIVE CLASS ANIMAL DEFINED
+PASSIVE CLASS ANIMAL DEFINED
 Note: Puffball sizes are 32 x 32
 
 ]]--
 PASSIVE_ANIMAL_DEFS = 
 {
-    ['Brown_Puffball'] = 
-    {
-        texture = 'BrownPuffball',
+    ['Brown_Puffball'] = {
+        texture = 'entities',
+        walkSpeed = 10,
         -- walking around, need sprite sheet for that
         animations = {
             ['walk-down'] = {

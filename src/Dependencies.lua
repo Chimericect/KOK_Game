@@ -7,6 +7,7 @@ Timer = require 'lib/knife.timer'
 push = require 'lib/push'
 
 require 'src/Animation'
+require 'src/Area'
 require 'src/constants'
 require 'src/entity_defs'
 require 'src/Entity'
@@ -59,18 +60,14 @@ gameTextures = {
     -- player
         ['character-walk'] = love.graphics.newImage('graphics/Characters/Player/character_walk.png'),
         ['character-swing-sword'] = love.graphics.newImage('graphics/Characters/Player/character_swing_sword.png'),
+    
+    -- Buildings
+        ['buildings'] = love.graphics.newImage('graphics/Buildings/Koruvia/Buildings.png'),
 
-    --entities taken from CS50
-    ['entities'] = love.graphics.newImage('graphics/Animals/entities.png')
+    -- Animals
+        ['entities'] = love.graphics.newImage('graphics/Animals/BrownPuffball.png')
 }
 
-gameAnimals = {
-    -- passive
-    ['BrownPuffball'] = love.graphics.newImage('graphics/Animals/BrownPuffball.png')
-    -- neutral
-
-    -- aggressive
-}
 -- frames --
 gameFrame = {
     -- nature tiles
@@ -78,11 +75,13 @@ gameFrame = {
     -- player things
     ['character-walk'] = GenerateQuads(gameTextures['character-walk'], 16, 32),
     ['character-swing-sword'] = GenerateQuads(gameTextures['character-swing-sword'], 32, 32),
-    
-    ['entities'] = GenerateQuads(gameTextures['entities'], 16, 16),
 
     -- Animals
-    ['BrownPuffball'] = GenerateQuads(gameAnimals['BrownPuffball'], 32, 32)
+    ['entities'] = GenerateQuads(gameTextures['entities'], 32, 32),
+
+    -- Buildings
+    ['buildings'] = GenerateQuads(gameTextures['buildings'],142,164)
+
 }
 
 -- Fonts --

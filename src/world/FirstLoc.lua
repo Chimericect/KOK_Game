@@ -18,11 +18,11 @@ function FirstLoc:init(player)
 
 -- generate animals in the location
         self.entities = {}
-        --self:generateAnimals()
+        self:generatePassiveEntities()
 
 -- and the objects in the location (none yet)
         self.buildings = {}
-     -- self:generateBuildings() 
+        self:generateBuildings() 
     
     self.player = player
 
@@ -37,9 +37,9 @@ function FirstLoc:init(player)
 end
 
 -- generate the animals that the player will interact with in the demo
-function FirstLoc:generateAnimals()
+function FirstLoc:generatePassiveEntities()
     -- Hold the names of the animals that we are generating
-    local passiveAnimals = { 'BrownPuffball' }
+    local passiveAnimals = { 'Brown_Puffball' }
 
     for i = 1, 10 do
         local type = passiveAnimals[math.random(#passiveAnimals)]
@@ -96,9 +96,12 @@ end
 
 -- generate objects / buildings
 function FirstLoc:generateBuildings()
+    table.insert(self.buildings,GameObject(
+        GAME_OBJECT_DEFS['Dekoda_Greenery'], 142,164
+    ))
 end
 
-function FirstLoc:update(dt)
+function FirstLoc:update(dt)-- don't update anything if we are sliding to another room (we have offsets)
     if self.adjacentOffsetX ~= 0 or self.adjacentOffsetY ~= 0 then return end
 
     --update the player
@@ -107,6 +110,7 @@ function FirstLoc:update(dt)
     for i = #self.entities, 1, -1 do
         local entity = self.entities[i]
     
+        -- if the entitiys health is at zero then they dead
         if entity.health <= 0 then
             entity.dead = true
         elseif not entity.dead then
@@ -123,8 +127,18 @@ end
 
 function FirstLoc:render()
     self.baseLayer:render()
-    --self.animals:render()
+    -- RENDER THE PLAYER
     self.player:render()
+
+     -- render the entities. If they aren't dead
+     for k, entity in pairs(self.entities) do
+        if not entity.dead then entity:render(self.adjacentOffsetX, self.adjacentOffsetY) end
+    end
+    
+    --Render the Buildings
+    for k, building in pairs(self.buildings) do
+        building:render(self.adjacentOffsetX, self.adjacentOffsetY)
+    end
     
     
 end
